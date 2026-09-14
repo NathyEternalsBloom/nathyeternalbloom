@@ -1,0 +1,700 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Naty Eternals Bloom</title>
+
+<style>
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #f8dff4, #e7d2ff, #f5c7e9);
+    color: #4b315c;
+}
+
+/* ENCABEZADO */
+
+header {
+    background: linear-gradient(90deg, #6d3b82, #9b5bb5, #d477ad);
+    color: white;
+    padding: 25px;
+    text-align: center;
+    box-shadow: 0 3px 10px #8e6799;
+}
+
+header h1 {
+    margin: 0;
+    font-family: Georgia, serif;
+    font-size: 42px;
+    letter-spacing: 2px;
+}
+
+header p {
+    margin: 8px 0 0;
+    font-size: 17px;
+}
+
+/* MENÚ */
+
+nav {
+    background-color: #fff;
+    text-align: center;
+    padding: 14px;
+    box-shadow: 0 2px 8px #c9a9cc;
+}
+
+nav a {
+    color: #743d86;
+    text-decoration: none;
+    margin: 0 20px;
+    font-weight: bold;
+}
+
+nav a:hover {
+    color: #d05b9e;
+}
+
+/* PRESENTACIÓN */
+
+.presentacion {
+    max-width: 1000px;
+    margin: 35px auto;
+    padding: 25px;
+    text-align: center;
+}
+
+.presentacion h2 {
+    font-family: Georgia, serif;
+    color: #713b83;
+    font-size: 30px;
+}
+
+.presentacion p {
+    font-size: 18px;
+    line-height: 1.7;
+}
+
+/* PRODUCTOS */
+
+.productos {
+    max-width: 1150px;
+    margin: auto;
+    padding: 20px;
+}
+
+.productos h2 {
+    text-align: center;
+    font-family: Georgia, serif;
+    color: #713b83;
+    font-size: 32px;
+    margin-bottom: 30px;
+}
+
+/* CUADRÍCULA */
+
+.catalogo {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+}
+
+/* TARJETAS */
+
+.tarjeta {
+    background-color: rgba(255,255,255,0.92);
+    border-radius: 18px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(92,55,105,0.25);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.tarjeta:hover {
+    transform: translateY(-7px);
+    box-shadow: 0 10px 22px rgba(92,55,105,0.35);
+}
+
+.tarjeta img {
+    width: 100%;
+    height: 240px;
+    object-fit: cover;
+    cursor: pointer;
+    display: block;
+}
+
+.informacion {
+    padding: 18px;
+}
+
+.informacion h3 {
+    margin-top: 0;
+    color: #743d86;
+    font-family: Georgia, serif;
+    font-size: 22px;
+}
+
+.informacion p {
+    line-height: 1.5;
+}
+
+.precio {
+    color: #b34d91;
+    font-size: 23px;
+    font-weight: bold;
+}
+
+.boton {
+    display: inline-block;
+    background: linear-gradient(90deg, #743d86, #c65c9e);
+    color: white;
+    padding: 10px 18px;
+    border-radius: 20px;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.boton:hover {
+    background: linear-gradient(90deg, #c65c9e, #743d86);
+}
+
+/* VENTANA DE PRODUCTO */
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(50,25,60,0.75);
+    overflow: auto;
+}
+
+.contenido-modal {
+    background-color: white;
+    width: 85%;
+    max-width: 800px;
+    margin: 5% auto;
+    border-radius: 20px;
+    padding: 25px;
+    position: relative;
+    box-shadow: 0 10px 30px #39233f;
+}
+
+.contenido-modal img {
+    width: 100%;
+    max-height: 400px;
+    object-fit: contain;
+    border-radius: 15px;
+}
+
+.contenido-modal h2 {
+    color: #743d86;
+    font-family: Georgia, serif;
+}
+
+.contenido-modal p {
+    font-size: 17px;
+    line-height: 1.6;
+}
+
+.cerrar {
+    position: absolute;
+    right: 20px;
+    top: 10px;
+    font-size: 35px;
+    color: #743d86;
+    cursor: pointer;
+}
+
+/* CONTACTO */
+
+.contacto {
+    margin-top: 50px;
+    background: linear-gradient(90deg, #713b83, #b65c9e);
+    color: white;
+    text-align: center;
+    padding: 35px;
+}
+
+.contacto h2 {
+    font-family: Georgia, serif;
+    font-size: 30px;
+}
+
+.contacto a {
+    color: white;
+    font-weight: bold;
+}
+
+/* PIE */
+
+footer {
+    text-align: center;
+    padding: 15px;
+    background-color: #4d285c;
+    color: white;
+}
+
+/* CELULAR */
+
+@media (max-width: 800px) {
+
+    .catalogo {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+}
+
+@media (max-width: 550px) {
+
+    .catalogo {
+        grid-template-columns: 1fr;
+    }
+
+    header h1 {
+        font-size: 30px;
+    }
+
+}
+
+</style>
+</head>
+
+<body>
+
+
+<!-- ENCABEZADO -->
+
+<header>
+
+<h1>Nathy Eternals Bloom</h1>
+
+<p>Detalles que florecen y momentos que perduran</p>
+
+</header>
+
+
+<!-- MENÚ -->
+
+<nav>
+
+<a href="#inicio">Inicio</a>
+
+<a href="#productos">Productos</a>
+
+<a href="#contacto">Contáctanos</a>
+
+</nav>
+
+
+<!-- PRESENTACIÓN -->
+
+<section class="presentacion" id="inicio">
+
+<h2>Bienvenidos a Nathy Eternals Bloom</h2>
+
+<p>
+Creamos arreglos florales personalizados para convertir cada ocasión
+en un recuerdo especial. Nuestros diseños son elaborados a mano,
+cuidando cada detalle para ofrecer piezas únicas, delicadas y
+llenas de creatividad.
+</p>
+
+</section>
+
+
+<!-- PRODUCTOS -->
+
+<section class="productos" id="productos">
+
+<h2>Nuestros productos</h2>
+
+<div class="catalogo">
+
+
+<!-- PRODUCTO 1 -->
+
+<div class="tarjeta">
+
+<img src="ramo15.png"
+onclick="mostrarProducto(
+'Ramo 15',
+'ramo15.png',
+'Un elegante ramo pensado para celebraciones especiales como quinceañeras. Su combinación de colores y flores crea una presentación delicada y llamativa.',
+'$25.00',
+'Flores de tela, papel decorativo y detalles ornamentales.',
+'Elaboración aproximada: 2 a 3 días.'
+)">
+
+<div class="informacion">
+
+<h3>Ramo 15</h3>
+
+<p>
+Un detalle elegante para celebraciones inolvidables.
+</p>
+
+<p class="precio">Consultar precio</p>
+
+<button class="boton"
+onclick="mostrarProducto(
+'Ramo 15',
+'ramo15.png',
+'Un elegante ramo pensado para celebraciones especiales como quinceañeras. Su combinación de colores y flores crea una presentación delicada y llamativa.',
+'$25.00',
+'Flores de tela, papel decorativo y detalles ornamentales.',
+'Elaboración aproximada: 2 a 3 días.'
+)">
+Ver producto
+</button>
+
+</div>
+
+</div>
+
+
+<!-- PRODUCTO 2 -->
+
+<div class="tarjeta">
+
+<img src="ramoderosas.png"
+onclick="mostrarProducto(
+'Ramo de Rosas',
+'ramosderosas.png',
+'Un clásico ramo de rosas perfecto para regalar en cumpleaños, aniversarios, celebraciones o simplemente para sorprender a alguien especial.',
+'$20.00',
+'Rosas de tela y envoltura decorativa.',
+'Elaboración aproximada: 2 días.'
+)">
+
+<div class="informacion">
+
+<h3>Ramo de Rosas</h3>
+
+<p>
+Clásico, romántico y perfecto para cualquier ocasión.
+</p>
+
+<p class="precio">Consultar precio</p>
+
+<button class="boton"
+onclick="mostrarProducto(
+'Ramo de Rosas',
+'ramosderosas.png',
+'Un clásico ramo de rosas perfecto para regalar en cumpleaños, aniversarios, celebraciones o simplemente para sorprender a alguien especial.',
+'$20.00',
+'Rosas de tela y envoltura decorativa.',
+'Elaboración aproximada: 2 días.'
+)">
+Ver producto
+</button>
+
+</div>
+
+</div>
+
+
+<!-- PRODUCTO 3 -->
+
+<div class="tarjeta">
+
+<img src="rosaeternavidrio.png"
+onclick="mostrarProducto(
+'Rosa Eterna en Vidrio',
+'rosaeternavidrio.png',
+'Una delicada rosa de tela presentada dentro de un recipiente de vidrio, diseñada para conservar su belleza como recuerdo decorativo.',
+'$30.00',
+'Rosa de tela, recipiente de vidrio y decoración.',
+'Elaboración aproximada: 2 a 3 días.'
+)">
+
+<div class="informacion">
+
+<h3>Rosa Eterna en Vidrio</h3>
+
+<p>
+Un símbolo de cariño que puede conservarse como recuerdo.
+</p>
+
+<p class="precio">Consultar precio</p>
+
+<button class="boton"
+onclick="mostrarProducto(
+'Rosa Eterna en Vidrio',
+'rosaeternavidrio.png',
+'Una delicada rosa de tela presentada dentro de un recipiente de vidrio, diseñada para conservar su belleza como recuerdo decorativo.',
+'$30.00',
+'Rosa de tela, recipiente de vidrio y decoración.',
+'Elaboración aproximada: 2 a 3 días.'
+)">
+Ver producto
+</button>
+
+</div>
+
+</div>
+
+
+<!-- PRODUCTO 4 -->
+
+<div class="tarjeta">
+
+<img src="Girasoleterna.png"
+onclick="mostrarProducto(
+'Girasol Eterno',
+'Girasoleterna.png',
+'Un hermoso girasol elaborado para representar alegría, energía y buenos deseos. Una opción diferente para regalar un detalle especial.',
+'$25.00',
+'Girasol de tela y elementos decorativos.',
+'Elaboración aproximada: 2 a 3 días.'
+)">
+
+<div class="informacion">
+
+<h3>Girasol Eterno</h3>
+
+<p>
+Un detalle lleno de alegría que ilumina cualquier espacio.
+</p>
+
+<p class="precio">Consultar precio</p>
+
+<button class="boton"
+onclick="mostrarProducto(
+'Girasol Eterno',
+'Girasoleterna.png',
+'Un hermoso girasol elaborado para representar alegría, energía y buenos deseos. Una opción diferente para regalar un detalle especial.',
+'$25.00',
+'Girasol de tela y elementos decorativos.',
+'Elaboración aproximada: 2 a 3 días.'
+)">
+Ver producto
+</button>
+
+</div>
+
+</div>
+
+
+<!-- PRODUCTO 5 -->
+
+<div class="tarjeta">
+
+<img src="Tulipándepipa.png"
+onclick="mostrarProducto(
+'Tulipán de Pipa',
+'Tulipándepipa.png',
+'Un diseño original y creativo que combina la delicadeza de un tulipán con una presentación diferente y llamativa.',
+'$22.00',
+'Flores de tela y elementos decorativos.',
+'Elaboración aproximada: 2 a 3 días.'
+)">
+
+<div class="informacion">
+
+<h3>Tulipán de Pipa</h3>
+
+<p>
+Un diseño original para quienes buscan algo diferente.
+</p>
+
+<p class="precio">Consultar precio</p>
+
+<button class="boton"
+onclick="mostrarProducto(
+'Tulipán de Pipa',
+'Tulipándepipa.png',
+'Un diseño original y creativo que combina la delicadeza de un tulipán con una presentación diferente y llamativa.',
+'$22.00',
+'Flores de tela y elementos decorativos.',
+'Elaboración aproximada: 2 a 3 días.'
+)">
+Ver producto
+</button>
+
+</div>
+
+</div>
+
+
+<!-- PRODUCTO 6 -->
+
+<div class="tarjeta">
+
+<img src="Mesaparadecoraciones(paraalquilar).png"
+onclick="mostrarProducto(
+'Mesa para Decoraciones',
+'Mesaparadecoraciones(paraalquilar).png',
+'Una mesa decorativa preparada para complementar celebraciones, reuniones y eventos especiales.',
+'Consultar',
+'Mesa y elementos decorativos según disponibilidad.',
+'Reserva con anticipación para confirmar disponibilidad.'
+)">
+
+<div class="informacion">
+
+<h3>Mesa para Decoraciones</h3>
+
+<p>
+Ideal para complementar eventos y celebraciones especiales.
+</p>
+
+<p class="precio">Consultar precio</p>
+
+<button class="boton"
+onclick="mostrarProducto(
+'Mesa para Decoraciones',
+'Mesaparadecoraciones(paraalquilar).png',
+'Una mesa decorativa preparada para complementar celebraciones, reuniones y eventos especiales.',
+'Consultar',
+'Mesa y elementos decorativos según disponibilidad.',
+'Reserva con anticipación para confirmar disponibilidad.'
+)">
+Ver producto
+</button>
+
+</div>
+
+</div>
+
+
+</div>
+
+</section>
+
+
+<!-- VENTANA DE PRODUCTO -->
+
+<div id="ventanaProducto" class="modal">
+
+<div class="contenido-modal">
+
+<span class="cerrar" onclick="cerrarProducto()">&times;</span>
+
+<img id="imagenProducto">
+
+<h2 id="nombreProducto"></h2>
+
+<p id="descripcionProducto"></p>
+
+<p>
+<strong>Precio:</strong>
+<span id="precioProducto"></span>
+</p>
+
+<p>
+<strong>Materiales:</strong>
+<span id="materialProducto"></span>
+</p>
+
+<p>
+<strong>Elaboración:</strong>
+<span id="tiempoProducto"></span>
+</p>
+
+<p>
+<strong>Envíos:</strong>
+Consultar disponibilidad y costo según la ubicación.
+</p>
+
+<a
+class="boton"
+href="https://wa.me/593958718409"
+target="_blank">
+Consultar por este producto
+</a>
+
+</div>
+
+</div>
+
+
+<!-- CONTACTO -->
+
+<section class="contacto" id="contacto">
+
+<h2>Contáctanos</h2>
+
+<p>
+<strong>Teléfono:</strong>
+<a href="tel:+593958718409">+593 95 871 8409</a>
+</p>
+
+<p>
+<strong>Correo:</strong>
+<a href="mailto:alexbrucs2009@gmail.com">
+alexbrucs2009@gmail.com
+</a>
+</p>
+
+<p>
+Haz tu pedido y descubre nuestros diseños personalizados.
+</p>
+
+</section>
+
+
+<!-- PIE DE PÁGINA -->
+
+<footer>
+
+<p>© 2026 Nathy Eternals Bloom | Diseños florales hechos con dedicación</p>
+
+</footer>
+
+
+<!-- JAVASCRIPT -->
+
+<script>
+
+function mostrarProducto(nombre, imagen, descripcion, precio, material, tiempo) {
+
+    document.getElementById("nombreProducto").innerHTML = nombre;
+
+    document.getElementById("imagenProducto").src = imagen;
+
+    document.getElementById("descripcionProducto").innerHTML = descripcion;
+
+    document.getElementById("precioProducto").innerHTML = precio;
+
+    document.getElementById("materialProducto").innerHTML = material;
+
+    document.getElementById("tiempoProducto").innerHTML = tiempo;
+
+    document.getElementById("ventanaProducto").style.display = "block";
+}
+
+
+function cerrarProducto() {
+
+    document.getElementById("ventanaProducto").style.display = "none";
+
+}
+
+
+window.onclick = function(event) {
+
+    var ventana = document.getElementById("ventanaProducto");
+
+    if (event.target == ventana) {
+
+        ventana.style.display = "none";
+
+    }
+
+}
+
+</script>
+
+</body>
+</html>
